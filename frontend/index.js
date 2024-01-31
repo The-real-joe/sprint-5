@@ -1,34 +1,37 @@
 async function sprintChallenge5() { // Note the async keyword, in case you wish to use `await` inside sprintChallenge5
   // 👇 WORK WORK BELOW THIS LINE 👇
-
-function cardMaker (user , mentor){
+  getUsers()
+function cardMaker (learner , mentor){
   const userCard = document.createElement('div');
   const userName = document.createElement('h3');
   const email = document.createElement('div');
   const mentorCard = document.createElement('h4');
-mentorName = document.createElement('ul');
+const mentorName = document.createElement('ul');
+const mentorList = document.createElement('li');
 
-
-  userCard.classList.add('user-card');
+  userCard.classList.add('card');
   email.classList.add('email');
-  mentorName.classList.add('mentor-name');
+  ;
 
   userCard.appendChild(userName);
   userCard.appendChild(email);
   userCard.appendChild(mentorCard);
   mentorCard.appendChild(mentorName);
+  mentorName.appendChild(mentorList);
 
-
+mentorName.addEventListener('click', () => {
+  mentorCard.classList.toggle('closed')
+})
   userCard.addEventListener('click', () => {
     userCard.classList.toggle('selected')
 })
 mentorCard.addEventListener('click', () => { 
   mentorCard.classList.toggle('selected')
 })
-userCard.textContent=learners.fullName, ID
-email.textContent=learners.email
+userName.textContent=learner.fullName
+email.textContent=learner.email
 mentorCard.textContent= 'Mentors'
-mentorName.textContent= mentors.fullName 
+// mentorList.textContent= mentor.fullName
 
 return userCard
 }
@@ -40,7 +43,8 @@ function getUsers (){
  userCards.forEach(userCard => document.body.appendChild(userCard))
 })
 }
-function getMentors (){
+
+/*function getMentors (){
   axios.get('http://localhost:3003/api/mentors')
 .then(res=> {
   const mentors = res.data
@@ -48,12 +52,13 @@ function getMentors (){
   mentorCards.forEach(mentorCard => document.body.appendChild(mentorCard))
 })
 }
-
+getMentors()
+*/
 
 
   const footer = document.querySelector('footer')
   const currentYear = new Date().getFullYear()
-  footer.textContent = `© BLOOM INSTITUTE OF TECHNOLOGY ${currentYear}`
+  footer.textContent = `© BLOOM INSTITUTE OF TECHNOLOGY 2023`
 
   // 👆 WORK WORK ABOVE THIS LINE 👆
 }
